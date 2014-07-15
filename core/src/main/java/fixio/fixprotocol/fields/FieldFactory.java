@@ -23,7 +23,7 @@ import java.text.ParseException;
 
 public class FieldFactory {
 
-	private static final Charset US_ASCII = Charset.forName("US_ASCII");
+	private static final Charset US_ASCII = Charset.forName("US-ASCII");
 	
     public static <F extends AbstractField> F valueOf(int tagNum, byte[] value) {
         return valueOf(tagNum, value, 0, value.length);

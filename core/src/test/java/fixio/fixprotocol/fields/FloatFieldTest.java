@@ -25,7 +25,7 @@ import org.junit.Test;
 
 public class FloatFieldTest {
 	
-	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
+	protected static final Charset US_ASCII = Charset.forName("US-ASCII");
 	
     private FixedPointNumber value;
     private int tag;

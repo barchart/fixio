@@ -35,7 +35,7 @@ import fixio.fixprotocol.MessageTypes;
 
 public class FixMessageDecoderTest {
 	
-	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
+	protected static final Charset US_ASCII = Charset.forName("US-ASCII");
 
     private static FixMessageDecoder decoder;
 

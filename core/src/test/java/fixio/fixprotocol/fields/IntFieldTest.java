@@ -25,7 +25,7 @@ import org.junit.Test;
 
 public class IntFieldTest {
 
-	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
+	protected static final Charset US_ASCII = Charset.forName("US-ASCII");
 	
     @Test
     public void testGetBytes() throws Exception {

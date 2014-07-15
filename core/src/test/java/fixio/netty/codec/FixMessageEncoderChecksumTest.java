@@ -29,7 +29,7 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class FixMessageEncoderChecksumTest {
 	
-	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
+	protected static final Charset US_ASCII = Charset.forName("US-ASCII");
 
     private ByteBuf byteBuf;
     private int offset;

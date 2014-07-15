@@ -34,7 +34,7 @@ import fixio.fixprotocol.FieldType;
 
 public class FieldFactoryTest {
 	
-	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
+	protected static final Charset US_ASCII = Charset.forName("US-ASCII");
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidTagField() throws Exception {

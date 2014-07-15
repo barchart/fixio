@@ -23,7 +23,7 @@ import fixio.fixprotocol.FixMessageFragment;
 
 public abstract class AbstractField<T> implements FixMessageFragment {
 	
-	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
+	protected static final Charset US_ASCII = Charset.forName("US-ASCII");
 
     private final int tagNum;
 

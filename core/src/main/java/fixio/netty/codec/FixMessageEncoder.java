@@ -41,7 +41,7 @@ import java.util.TimeZone;
 public class FixMessageEncoder extends MessageToByteEncoder<FixMessageBuilder> {
 
     private static final TimeZone UTC = TimeZone.getTimeZone("UTC");
-    private static final Charset CHARSET = Charset.forName("US_ASCII");
+    private static final Charset CHARSET = Charset.forName("US-ASCII");
     private static final String UTC_TIMESTAMP_WITH_MILLIS_PATTERN = "yyyyMMdd-HH:mm:ss.SSS";
     private static final ThreadLocal<DateFormat> sdf = new ThreadLocal<DateFormat>() {
         @Override
