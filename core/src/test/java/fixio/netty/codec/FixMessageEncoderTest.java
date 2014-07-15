@@ -15,12 +15,25 @@
  */
 package fixio.netty.codec;
 
-import fixio.fixprotocol.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import fixio.fixprotocol.FixMessage;
+import fixio.fixprotocol.FixMessageBuilder;
+import fixio.fixprotocol.FixMessageBuilderImpl;
+import fixio.fixprotocol.FixMessageFragment;
+import fixio.fixprotocol.FixMessageHeader;
+import fixio.fixprotocol.Group;
+import fixio.fixprotocol.MessageTypes;
 import fixio.fixprotocol.fields.FieldFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
+
+import java.nio.charset.Charset;
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -28,15 +41,10 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.Arrays;
-
-import static java.nio.charset.StandardCharsets.US_ASCII;
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 @RunWith(MockitoJUnitRunner.class)
 public class FixMessageEncoderTest {
+	
+	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
 
     private static FixMessageEncoder encoder;
     @Mock

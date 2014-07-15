@@ -57,7 +57,7 @@ public class CompositeFixApplicationAdapterTest {
         adapter = new CompositeFixApplicationAdapter(
                 Arrays.asList(messageValidator1, messageValidator2),
                 Arrays.asList(messageHandler1, messageHandler2, messageHandler3));
-        out = new ArrayList<>();
+        out = new ArrayList<Object>();
     }
 
     @Test

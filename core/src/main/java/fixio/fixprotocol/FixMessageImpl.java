@@ -31,7 +31,7 @@ public class FixMessageImpl implements FixMessage {
 
     private final FixMessageHeader header = new FixMessageHeader();
     private final FixMessageTrailer trailer = new FixMessageTrailer();
-    private final List<FixMessageFragment> body = new ArrayList<>();
+    private final List<FixMessageFragment> body = new ArrayList<FixMessageFragment>();
 
     public FixMessageImpl add(int tagNum, byte[] value) {
         return add(tagNum, value, 0, value.length);

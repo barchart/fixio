@@ -15,8 +15,6 @@
  */
 package fixio.fixprotocol.fields;
 
-import java.nio.charset.StandardCharsets;
-
 public class StringField extends AbstractField<String> {
 
     private final String value;
@@ -32,6 +30,6 @@ public class StringField extends AbstractField<String> {
 
     @Override
     public byte[] getBytes() {
-        return value.getBytes(StandardCharsets.US_ASCII);
+        return value.getBytes(US_ASCII);
     }
 }

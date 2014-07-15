@@ -63,7 +63,7 @@ public class ServerSessionHandlerTest {
     @Before
     public void setUp() {
         handler = new ServerSessionHandler(authenticator, fixApplication);
-        outgoingMessages = new ArrayList<>();
+        outgoingMessages = new ArrayList<Object>();
 
         logonMsg = new FixMessageBuilderImpl(MessageTypes.LOGON);
         FixMessageHeader header = logonMsg.getHeader();
@@ -71,7 +71,7 @@ public class ServerSessionHandlerTest {
         header.setSenderCompID(randomAscii(3));
         header.setTargetCompID(randomAscii(4));
 
-        Attribute<FixSession> sessionAttribute = new AttributeMock<>();
+        Attribute<FixSession> sessionAttribute = new AttributeMock<FixSession>();
         when(ctx.attr(AbstractSessionHandler.FIX_SESSION_KEY)).thenReturn(sessionAttribute);
     }
 

@@ -16,7 +16,11 @@
 
 package fixio.netty.codec;
 
-import fixio.fixprotocol.*;
+import fixio.fixprotocol.FixMessageBuilder;
+import fixio.fixprotocol.FixMessageFragment;
+import fixio.fixprotocol.FixMessageHeader;
+import fixio.fixprotocol.Group;
+import fixio.fixprotocol.GroupField;
 import fixio.fixprotocol.fields.AbstractField;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
@@ -25,7 +29,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -38,7 +41,7 @@ import java.util.TimeZone;
 public class FixMessageEncoder extends MessageToByteEncoder<FixMessageBuilder> {
 
     private static final TimeZone UTC = TimeZone.getTimeZone("UTC");
-    private static final Charset CHARSET = StandardCharsets.US_ASCII;
+    private static final Charset CHARSET = Charset.forName("US_ASCII");
     private static final String UTC_TIMESTAMP_WITH_MILLIS_PATTERN = "yyyyMMdd-HH:mm:ss.SSS";
     private static final ThreadLocal<DateFormat> sdf = new ThreadLocal<DateFormat>() {
         @Override

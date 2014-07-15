@@ -25,7 +25,7 @@ public class SessionRepository {
 
     private static final SessionRepository INSTANCE = new SessionRepository();
 
-    private final ConcurrentHashMap<SessionId, FixSession> sessions = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<SessionId, FixSession> sessions = new ConcurrentHashMap<SessionId, FixSession>();
 
     public static SessionRepository getInstance() {
         return INSTANCE;

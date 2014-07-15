@@ -23,8 +23,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import static java.nio.charset.StandardCharsets.US_ASCII;
-
 public class UTCTimestampField extends AbstractField<Long> {
 
     private static final TimeZone UTC = TimeZone.getTimeZone("UTC");

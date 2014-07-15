@@ -17,8 +17,6 @@ package fixio.fixprotocol.fields;
 
 import java.text.ParseException;
 
-import static java.nio.charset.StandardCharsets.US_ASCII;
-
 public class IntField extends AbstractField<Integer> {
 
     private final int value;

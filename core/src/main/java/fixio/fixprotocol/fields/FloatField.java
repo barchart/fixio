@@ -15,7 +15,6 @@
  */
 package fixio.fixprotocol.fields;
 
-import static java.nio.charset.StandardCharsets.US_ASCII;
 
 public class FloatField extends AbstractField<FixedPointNumber> {
 

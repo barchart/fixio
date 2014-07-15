@@ -15,20 +15,26 @@
  */
 package fixio.fixprotocol.fields;
 
-import fixio.fixprotocol.FieldType;
-import org.junit.Test;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
+import static org.apache.commons.lang3.RandomStringUtils.randomAscii;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
+import java.nio.charset.Charset;
 import java.util.Calendar;
 import java.util.Random;
 import java.util.TimeZone;
 
-import static java.nio.charset.StandardCharsets.US_ASCII;
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
-import static org.apache.commons.lang3.RandomStringUtils.randomAscii;
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import fixio.fixprotocol.FieldType;
 
 public class FieldFactoryTest {
+	
+	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidTagField() throws Exception {
@@ -48,7 +54,7 @@ public class FieldFactoryTest {
     @Test
     public void testBigTagNumber() throws Exception {
         String value = randomAscii(5);
-        int tagNum = 100_000;
+        int tagNum = 100000;
         StringField field = FieldFactory.valueOf(tagNum, value.getBytes(US_ASCII));
 
         assertEquals("tagnum", tagNum, field.getTagNum());

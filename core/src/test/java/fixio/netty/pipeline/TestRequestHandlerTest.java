@@ -73,7 +73,7 @@ public class TestRequestHandlerTest {
     public void testSkipOtherMessage() throws Exception {
         when(fixMessage.getMessageType()).thenReturn(MessageTypes.HEARTBEAT);
 
-        ArrayList<Object> out = new ArrayList<>();
+        ArrayList<Object> out = new ArrayList<Object>();
         handler.decode(ctx, fixMessage, out);
 
         verifyZeroInteractions(ctx);
@@ -87,7 +87,7 @@ public class TestRequestHandlerTest {
         when(fixMessage.getMessageType()).thenReturn(MessageTypes.TEST_REQUEST);
         when(fixMessage.getString(TestReqID)).thenReturn(testReqId);
 
-        List<Object> result = new ArrayList<>();
+        List<Object> result = new ArrayList<Object>();
         handler.decode(ctx, fixMessage, result);
 
         verify(channel, times(1)).writeAndFlush(messageBuilderCaptor.capture());

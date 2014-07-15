@@ -30,7 +30,7 @@ public class GroupField implements FixMessageFragment<List<Group>> {
 
     protected GroupField(int tagNum, int expectedSize) {
         this.tagNum = tagNum;
-        groups = new ArrayList<>(expectedSize);
+        groups = new ArrayList<Group>(expectedSize);
     }
 
     protected GroupField(int tagNum) {

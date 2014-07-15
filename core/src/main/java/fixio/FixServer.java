@@ -55,7 +55,7 @@ public class FixServer extends AbstractFixConnector {
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup(8);
         final ServerBootstrap bootstrap = new ServerBootstrap();
-        final FixAcceptorChannelInitializer<SocketChannel> channelInitializer = new FixAcceptorChannelInitializer<>(
+        final FixAcceptorChannelInitializer<SocketChannel> channelInitializer = new FixAcceptorChannelInitializer<SocketChannel>(
                 workerGroup,
                 authenticator,
                 getFixApplication()

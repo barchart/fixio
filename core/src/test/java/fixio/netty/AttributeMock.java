@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class AttributeMock<T> implements Attribute<T> {
 
-    private final AtomicReference<T> holder = new AtomicReference<>();
+    private final AtomicReference<T> holder = new AtomicReference<T>();
 
     @Override
     public AttributeKey<T> key() {

@@ -55,7 +55,7 @@ public class ServerChannelPipelineIntegrationTest {
         LocalAddress address = LocalAddress.ANY;
 
         EventLoopGroup workerGroup = new DefaultEventLoopGroup();
-        final FixAcceptorChannelInitializer<Channel> channelInitializer = new FixAcceptorChannelInitializer<>(
+        final FixAcceptorChannelInitializer<Channel> channelInitializer = new FixAcceptorChannelInitializer<Channel>(
                 workerGroup,
                 authenticator,
                 new FixApplicationAdapter()

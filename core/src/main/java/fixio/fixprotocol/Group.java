@@ -30,11 +30,11 @@ public class Group implements FieldListBuilder<Group> {
     private final ArrayList<FixMessageFragment> contents;
 
     public Group(int expectedSize) {
-        this.contents = new ArrayList<>(expectedSize);
+        this.contents = new ArrayList<FixMessageFragment>(expectedSize);
     }
 
     public Group() {
-        this.contents = new ArrayList<>(DEFAULT_GROUP_SIZE);
+        this.contents = new ArrayList<FixMessageFragment>(DEFAULT_GROUP_SIZE);
     }
 
     public void add(FixMessageFragment element) {

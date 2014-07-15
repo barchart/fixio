@@ -15,15 +15,18 @@
  */
 package fixio.fixprotocol.fields;
 
+import static org.junit.Assert.assertArrayEquals;
+
+import java.nio.charset.Charset;
+import java.util.Random;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Random;
-
-import static java.nio.charset.StandardCharsets.US_ASCII;
-import static org.junit.Assert.assertArrayEquals;
-
 public class FloatFieldTest {
+	
+	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
+	
     private FixedPointNumber value;
     private int tag;
     private FloatField field;

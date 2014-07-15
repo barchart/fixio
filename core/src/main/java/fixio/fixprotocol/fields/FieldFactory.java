@@ -18,12 +18,13 @@ package fixio.fixprotocol.fields;
 import fixio.fixprotocol.DataType;
 import fixio.fixprotocol.FieldType;
 
+import java.nio.charset.Charset;
 import java.text.ParseException;
-
-import static java.nio.charset.StandardCharsets.US_ASCII;
 
 public class FieldFactory {
 
+	private static final Charset US_ASCII = Charset.forName("US_ASCII");
+	
     public static <F extends AbstractField> F valueOf(int tagNum, byte[] value) {
         return valueOf(tagNum, value, 0, value.length);
     }
@@ -57,8 +58,10 @@ public class FieldFactory {
                     throw new UnsupportedOperationException("Unsupported field type: " + fieldType
                             + '(' + fieldType.type() + ')');
             }
-        } catch (ParseException | NumberFormatException e) {
+        } catch (ParseException e) {
             throw new IllegalArgumentException("Invalid value for field " + fieldType + ": " + e.getMessage(), e);
+        } catch (NumberFormatException e) {
+        	throw new IllegalArgumentException("Invalid value for field " + fieldType + ": " + e.getMessage(), e);
         }
     }
 

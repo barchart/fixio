@@ -15,19 +15,21 @@
  */
 package fixio.netty.codec;
 
+import static org.junit.Assert.assertEquals;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+
+import java.nio.charset.Charset;
+import java.util.Arrays;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-
-import static org.junit.Assert.assertEquals;
-
 @RunWith(Parameterized.class)
 public class FixMessageEncoderChecksumTest {
+	
+	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
 
     private ByteBuf byteBuf;
     private int offset;
@@ -42,7 +44,7 @@ public class FixMessageEncoderChecksumTest {
     }
 
     public FixMessageEncoderChecksumTest(String str, int offset, int expectedChecksum) {
-        this.byteBuf = Unpooled.wrappedBuffer(str.replaceAll("\\|", "\u0001").getBytes(StandardCharsets.US_ASCII));
+        this.byteBuf = Unpooled.wrappedBuffer(str.replaceAll("\\|", "\u0001").getBytes(US_ASCII));
         this.offset = offset;
         this.expectedChecksum = expectedChecksum;
     }

@@ -16,10 +16,14 @@
 package fixio.fixprotocol.fields;
 
 
+import java.nio.charset.Charset;
+
 import fixio.fixprotocol.FieldType;
 import fixio.fixprotocol.FixMessageFragment;
 
 public abstract class AbstractField<T> implements FixMessageFragment {
+	
+	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
 
     private final int tagNum;
 

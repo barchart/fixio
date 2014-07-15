@@ -34,7 +34,7 @@ public class FixConversationIT {
     public static final int TEST_TIMEOUT = 5000;
     public static final int PORT = 10453;
     private static FixServer server;
-    private static List<FixMessage> conversation = new ArrayList<>();
+    private static List<FixMessage> conversation = new ArrayList<FixMessage>();
     private FixClient client;
     private ChannelFuture clientCloseFuture;
 

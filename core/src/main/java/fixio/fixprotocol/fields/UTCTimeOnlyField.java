@@ -15,15 +15,12 @@
  */
 package fixio.fixprotocol.fields;
 
-import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import static java.nio.charset.StandardCharsets.US_ASCII;
 
 public class UTCTimeOnlyField extends AbstractField<Long> {
 
@@ -98,7 +95,7 @@ public class UTCTimeOnlyField extends AbstractField<Long> {
     }
 
     private static void throwParseException(byte[] bytes, int errorOffset) throws ParseException {
-        throw new ParseException("Unparseable date: " + new String(bytes, StandardCharsets.US_ASCII), errorOffset);
+        throw new ParseException("Unparseable date: " + new String(bytes, US_ASCII), errorOffset);
     }
 
     @Override

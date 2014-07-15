@@ -84,7 +84,7 @@ public class ClientSessionHandlerTest {
         when(sequenceProvider.getMsgInSeqNum()).thenReturn(inMsgSeqNum);
         when(sequenceProvider.getMsgOutSeqNum()).thenReturn(outMsgSeqNum);
 
-        sessionAttribute = new AttributeMock<>();
+        sessionAttribute = new AttributeMock<FixSession>();
         when(ctx.attr(AbstractSessionHandler.FIX_SESSION_KEY)).thenReturn(sessionAttribute);
         when(ctx.channel()).thenReturn(channel);
     }
@@ -127,7 +127,7 @@ public class ClientSessionHandlerTest {
 
         sessionAttribute.set(fixSession);
 
-        final List<Object> outgoingMessages = new ArrayList<>();
+        final List<Object> outgoingMessages = new ArrayList<Object>();
 
         // emulate logon response from server
         handler.decode(ctx, logonResponseMsg, outgoingMessages);
@@ -159,7 +159,7 @@ public class ClientSessionHandlerTest {
 
         sessionAttribute.set(fixSession);
 
-        final List<Object> outgoingMessages = new ArrayList<>();
+        final List<Object> outgoingMessages = new ArrayList<Object>();
 
         // emulate logon response from server
         handler.decode(ctx, logonResponseMsg, outgoingMessages);

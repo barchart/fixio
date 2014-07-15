@@ -15,24 +15,27 @@
  */
 package fixio.netty.codec;
 
-import fixio.fixprotocol.FieldType;
-import fixio.fixprotocol.FixMessageHeader;
-import fixio.fixprotocol.FixMessageImpl;
-import fixio.fixprotocol.MessageTypes;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import io.netty.buffer.Unpooled;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import fixio.fixprotocol.FieldType;
+import fixio.fixprotocol.FixMessageHeader;
+import fixio.fixprotocol.FixMessageImpl;
+import fixio.fixprotocol.MessageTypes;
 
 public class FixMessageDecoderTest {
+	
+	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
 
     private static FixMessageDecoder decoder;
 
@@ -72,9 +75,9 @@ public class FixMessageDecoderTest {
     private List<Object> decode(String message) throws Exception {
         String[] tags = message.split("\u0001");
 
-        List<Object> result = new ArrayList<>();
+        List<Object> result = new ArrayList<Object>();
         for (String tag : tags) {
-            decoder.decode(null, Unpooled.wrappedBuffer(tag.getBytes(StandardCharsets.US_ASCII)), result);
+            decoder.decode(null, Unpooled.wrappedBuffer(tag.getBytes(US_ASCII)), result);
         }
         return result;
     }

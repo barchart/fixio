@@ -30,6 +30,7 @@
     <description>FIX Protocol Support for Netty 4</description>
 
     <properties>
+    	<projectJavaVersion>1.6</projectJavaVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -85,7 +86,7 @@
 
     <build>
         <plugins>
-            <plugin>
+            <!-- <plugin>
                 <groupId>net.sf.xsltmp</groupId>
                 <artifactId>xslt-generator-maven-plugin</artifactId>
                 <version>1.8</version>
@@ -107,7 +108,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

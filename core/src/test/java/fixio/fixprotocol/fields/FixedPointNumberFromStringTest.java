@@ -15,19 +15,21 @@
  */
 package fixio.fixprotocol.fields;
 
+import static org.junit.Assert.assertEquals;
+
+import java.math.BigDecimal;
+import java.nio.charset.Charset;
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-
-import static java.nio.charset.StandardCharsets.US_ASCII;
-import static org.junit.Assert.assertEquals;
-
 @RunWith(Parameterized.class)
 public class FixedPointNumberFromStringTest {
+	
+	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
 
     private final String string;
     private final int offset;

@@ -23,8 +23,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import static java.nio.charset.StandardCharsets.US_ASCII;
-
 /**
  * Field representing Date represented in UTC (Universal Time Coordinated, also known as "GMT") in YYYYMMDD format.
  * <p/>

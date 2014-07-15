@@ -16,24 +16,28 @@
 package fixio.netty.codec;
 
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import fixio.fixprotocol.FixMessageImpl;
 import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.DecoderException;
+
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.*;
-
 @RunWith(Parameterized.class)
 public class FixMessageDecoderChecksumTest {
 
+	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
+	
     private static FixMessageDecoder decoder;
     private final boolean checksumValid;
     private String fixMessage;
@@ -63,9 +67,9 @@ public class FixMessageDecoderChecksumTest {
     private static List<Object> decode(String message) throws Exception {
         String[] tags = message.split("\\|");
 
-        List<Object> result = new ArrayList<>();
+        List<Object> result = new ArrayList<Object>();
         for (String tag : tags) {
-            decoder.decode(null, Unpooled.wrappedBuffer(tag.getBytes(StandardCharsets.US_ASCII)), result);
+            decoder.decode(null, Unpooled.wrappedBuffer(tag.getBytes(US_ASCII)), result);
         }
         return result;
     }

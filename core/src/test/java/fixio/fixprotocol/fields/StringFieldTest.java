@@ -15,16 +15,18 @@
  */
 package fixio.fixprotocol.fields;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.Random;
-
-import static java.nio.charset.StandardCharsets.US_ASCII;
 import static org.apache.commons.lang3.RandomStringUtils.randomAscii;
 import static org.junit.Assert.assertArrayEquals;
 
+import java.nio.charset.Charset;
+import java.util.Random;
+
+import org.junit.Before;
+import org.junit.Test;
+
 public class StringFieldTest {
+	
+	protected static final Charset US_ASCII = Charset.forName("US_ASCII");
 
     private String value;
     private StringField field;

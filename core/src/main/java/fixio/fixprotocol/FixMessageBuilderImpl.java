@@ -37,7 +37,7 @@ public class FixMessageBuilderImpl implements FixMessage, FixMessageBuilder {
     public FixMessageBuilderImpl(int expectedBodyFieldCount) {
         header = new FixMessageHeader();
         trailer = new FixMessageTrailer();
-        body = new ArrayList<>(expectedBodyFieldCount);
+        body = new ArrayList<FixMessageFragment>(expectedBodyFieldCount);
     }
 
     /**
@@ -48,7 +48,7 @@ public class FixMessageBuilderImpl implements FixMessage, FixMessageBuilder {
         assert (trailer != null) : "FixMessageTrailer is expected";
         this.header = header;
         this.trailer = trailer;
-        body = new ArrayList<>(DEFAULT_BODY_FIELD_COUNT);
+        body = new ArrayList<FixMessageFragment>(DEFAULT_BODY_FIELD_COUNT);
     }
 
     /**
