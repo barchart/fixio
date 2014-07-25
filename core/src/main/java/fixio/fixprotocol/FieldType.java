@@ -20,6 +20,15 @@
         import static fixio.fixprotocol.DataType.*;
 
         public enum FieldType {
+        	
+        	/* Custom tags for OEC */
+        	MaxRecords(12051, INT),
+        	SymbolLookupMode(12052, CHAR),
+        	ContractGroup(12054, STRING),
+        	ContractType(12055, CHAR),
+        	ByBaseContractsOnly(12056, BOOLEAN),
+        	OptionsRequired(12057, BOOLEAN),
+        	
         UNKNOWN(-1, STRING),
         Account(1,
         STRING

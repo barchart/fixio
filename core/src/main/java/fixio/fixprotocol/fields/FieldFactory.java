@@ -163,6 +163,16 @@ public class FieldFactory {
             case SEQNUM:
             case NUMINGROUP:
                 return (F) new IntField(tagNum, Integer.parseInt(value));
+            case BOOLEAN:
+            	if("N".equals(value)) {
+            		return (F) new BooleanField(tagNum, false);
+            	} else if("Y".equals(value)) {
+            		return (F) new BooleanField(tagNum, true);
+            	} else {
+            		throw new IllegalArgumentException("Value " + value + " is not applicable for field : " + tagNum
+                            + '(' + type + ')');
+            	}
+              
             default:
                 throw new IllegalArgumentException("Value " + value + " is not applicable for field : " + tagNum
                         + '(' + type + ')');
