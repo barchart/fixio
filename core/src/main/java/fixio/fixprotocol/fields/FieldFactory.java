@@ -149,6 +149,7 @@ public class FieldFactory {
     @SuppressWarnings("unchecked")
     public static <F extends AbstractField<?>> F fromStringValue(DataType type, int tagNum, String value) {
         switch (type) {
+        	case CHAR:
             case STRING:
                 return (F) new StringField(tagNum, value);
             case FLOAT:
@@ -164,9 +165,9 @@ public class FieldFactory {
             case NUMINGROUP:
                 return (F) new IntField(tagNum, Integer.parseInt(value));
             case BOOLEAN:
-            	if("N".equals(value)) {
+            	if("N".equals(value) || "FALSE".equals(value)) {
             		return (F) new BooleanField(tagNum, false);
-            	} else if("Y".equals(value)) {
+            	} else if("Y".equals(value) || "TRUE".equals(value)) {
             		return (F) new BooleanField(tagNum, true);
             	} else {
             		throw new IllegalArgumentException("Value " + value + " is not applicable for field : " + tagNum

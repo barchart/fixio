@@ -21,13 +21,15 @@
 
         public enum FieldType {
         	
-        	/* Custom tags for OEC */
-        	MaxRecords(12051, INT),
-        	SymbolLookupMode(12052, CHAR),
-        	ContractGroup(12054, STRING),
-        	ContractType(12055, CHAR),
-        	ByBaseContractsOnly(12056, BOOLEAN),
-        	OptionsRequired(12057, BOOLEAN),
+    	/* Custom tags for OEC */
+        UUID(12003, STRING),
+        FastHashCode(12004, STRING),
+    	MaxRecords(12051, INT),
+    	SymbolLookupMode(12052, CHAR),
+    	ContractGroup(12054, STRING),
+    	ContractType(12055, CHAR),
+    	ByBaseContractsOnly(12056, BOOLEAN),
+    	OptionsRequired(12057, BOOLEAN),
         	
         UNKNOWN(-1, STRING),
         Account(1,
