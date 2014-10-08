@@ -31,11 +31,13 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import io.netty.util.concurrent.GenericFutureListener;
 
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FixClient extends AbstractFixConnector {
 
@@ -99,8 +101,34 @@ public class FixClient extends AbstractFixConnector {
         LOGGER.info("FixClient is started and connected to {}", channel.remoteAddress());
         return channel.closeFuture();
     }
+    
+    public ChannelFuture connectAsync(final String host, final int port) {
+    	
+    	LOGGER.info("FixClient is starting");
+    	Bootstrap b = new Bootstrap();
+        bossEventLoopGroup = new NioEventLoopGroup();
+        workerEventLoopGroup = new NioEventLoopGroup(8);
+        b.group(bossEventLoopGroup)
+                .channel(NioSocketChannel.class)
+                .remoteAddress(new InetSocketAddress(host, port))
+                .option(ChannelOption.TCP_NODELAY,
+                        Boolean.parseBoolean(System.getProperty(
+                                "nfs.rpc.tcp.nodelay", "true")))
+                .option(ChannelOption.ALLOCATOR, new PooledByteBufAllocator())
+                .handler(new FixInitiatorChannelInitializer<SocketChannel>(
+                        workerEventLoopGroup,
+                        sessionSettingsProvider,
+                        messageSequenceProvider,
+                        getFixApplication()
+                ))
+                .validate();
+        
+        return b.connect();
+        
+    }
 
     public void disconnect() throws InterruptedException {
+    	
         LOGGER.info("Closing connection to {}", channel.remoteAddress());
         channel.close().sync();
         if (workerEventLoopGroup != null)
@@ -109,8 +137,28 @@ public class FixClient extends AbstractFixConnector {
             bossEventLoopGroup.shutdownGracefully();
         bossEventLoopGroup = null;
         workerEventLoopGroup = null;
+        
     }
 
+    public ChannelFuture disconnectAsync() {
+    	
+    	LOGGER.info("Closing connection to {}", channel.remoteAddress());
+    	return channel.close().addListener(new GenericFutureListener<ChannelFuture>() {
+
+			@Override
+			public void operationComplete(final ChannelFuture future) throws Exception {
+				if (workerEventLoopGroup != null)
+		            workerEventLoopGroup.shutdownGracefully();
+		        if(bossEventLoopGroup != null)
+		            bossEventLoopGroup.shutdownGracefully();
+		        bossEventLoopGroup = null;
+		        workerEventLoopGroup = null;
+			}
+    		
+    	});
+    	
+    }
+    
     public void send(FixMessageBuilder fixMessageBuilder) throws InterruptedException {
         channel.writeAndFlush(fixMessageBuilder);
     }
