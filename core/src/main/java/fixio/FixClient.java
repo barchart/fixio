@@ -159,7 +159,7 @@ public class FixClient extends AbstractFixConnector {
     	
     }
     
-    public void send(FixMessageBuilder fixMessageBuilder) throws InterruptedException {
+    public void send(FixMessageBuilder fixMessageBuilder) {
         channel.writeAndFlush(fixMessageBuilder);
     }
 }
