@@ -72,7 +72,7 @@ public final class MessageTypes {
     public static final String CONTRARY_INTENTION_REPORT = "BO";
     public static final String SECURITY_DEFINITION_UPDATE_REPORT = "BP";
     public static final String SETTLEMENT_OBLIGATION_REPORT = "BQ";
-    public static final String DERIVATIVE_SECURITY_LIST_UPDATE_REPORT = "BR";
+    public static final String ORDER_MASS_STATUS_ACK = "BR";
     public static final String TRADING_SESSION_LIST_UPDATE_REPORT = "BS";
     public static final String MARKET_DEFINITIONREQUEST = "BT";
     public static final String MARKET_DEFINITION = "BU";
