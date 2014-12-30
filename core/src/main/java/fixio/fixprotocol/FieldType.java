@@ -30,6 +30,8 @@
     	ContractType(12055, CHAR),
     	ByBaseContractsOnly(12056, BOOLEAN),
     	OptionsRequired(12057, BOOLEAN),
+    	
+    	MassStatusReqResult(12074, INT), 
         	
         UNKNOWN(-1, STRING),
         Account(1,
