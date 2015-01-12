@@ -149,34 +149,35 @@ public class FieldFactory {
     @SuppressWarnings("unchecked")
     public static <F extends AbstractField<?>> F fromStringValue(DataType type, int tagNum, String value) {
         switch (type) {
-        	case CHAR:
-            case STRING:
-                return (F) new StringField(tagNum, value);
-            case FLOAT:
-            case PRICE:
-            case PRICEOFFSET:
-            case PERCENTAGE:
-            case AMT:
-            case QTY:
-                return (F) new FloatField(tagNum, new FixedPointNumber(value));
-            case INT:
-            case LENGTH:
-            case SEQNUM:
-            case NUMINGROUP:
-                return (F) new IntField(tagNum, Integer.parseInt(value));
-            case BOOLEAN:
-            	if("N".equals(value) || "FALSE".equals(value)) {
-            		return (F) new BooleanField(tagNum, false);
-            	} else if("Y".equals(value) || "TRUE".equals(value)) {
-            		return (F) new BooleanField(tagNum, true);
-            	} else {
-            		throw new IllegalArgumentException("Value " + value + " is not applicable for field : " + tagNum
-                            + '(' + type + ')');
-            	}
+        case MONTHYEAR: 
+        case CHAR:
+        case STRING:
+        	return (F) new StringField(tagNum, value);
+        case FLOAT:
+        case PRICE:
+        case PRICEOFFSET:
+        case PERCENTAGE:
+        case AMT:
+        case QTY:
+        	return (F) new FloatField(tagNum, new FixedPointNumber(value));
+        case INT:
+        case LENGTH:
+        case SEQNUM:
+        case NUMINGROUP:
+        	return (F) new IntField(tagNum, Integer.parseInt(value));
+        case BOOLEAN:
+         	if("N".equals(value) || "FALSE".equals(value)) {
+           		return (F) new BooleanField(tagNum, false);
+           	} else if("Y".equals(value) || "TRUE".equals(value)) {
+           		return (F) new BooleanField(tagNum, true);
+           	} else {
+           		throw new IllegalArgumentException("Value " + value + " is not applicable for field : " + tagNum
+                       + '(' + type + ')');
+           	}
               
-            default:
-                throw new IllegalArgumentException("Value " + value + " is not applicable for field : " + tagNum
-                        + '(' + type + ')');
+        default:
+           throw new IllegalArgumentException("Value " + value + " is not applicable for field : " + tagNum
+                   + '(' + type + ')');
         }
     }
 

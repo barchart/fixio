@@ -198,7 +198,14 @@ public class FixMessageBuilderImpl implements FixMessage, FixMessageBuilder {
 
     @Override
     public <T> T getValue(FieldType field) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+    	
+    	final FixMessageFragment<T> frag = getFirst(field.tag());
+    	
+    	if(frag == null) {
+    		return null;
+    	}
+    	
+        return frag.getValue();
     }
 
     @Override
