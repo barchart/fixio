@@ -149,6 +149,7 @@ public class FieldFactory {
     @SuppressWarnings("unchecked")
     public static <F extends AbstractField<?>> F fromStringValue(DataType type, int tagNum, String value) {
         switch (type) {
+        case LOCALMKTDATE:
         case MONTHYEAR: 
         case CHAR:
         case STRING:
