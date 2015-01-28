@@ -31,6 +31,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 
 import java.net.InetSocketAddress;
@@ -105,7 +106,7 @@ public class FixClient extends AbstractFixConnector {
     public ChannelFuture connectAsync(final String host, final int port) {
     	
     	LOGGER.info("FixClient is starting");
-    	Bootstrap b = new Bootstrap();
+    	final Bootstrap b = new Bootstrap();
         bossEventLoopGroup = new NioEventLoopGroup();
         workerEventLoopGroup = new NioEventLoopGroup(8);
         b.group(bossEventLoopGroup)
@@ -123,7 +124,17 @@ public class FixClient extends AbstractFixConnector {
                 ))
                 .validate();
         
-        return b.connect();
+        /* This was added because channel was not being set after connecting */
+        final ChannelFuture connectFuture = b.connect();
+        
+        return connectFuture.addListener(new GenericFutureListener<Future<Void>>() {
+
+			@Override
+			public void operationComplete(final Future<Void> future) throws Exception {
+				channel = connectFuture.channel();
+			}
+        	
+        });
         
     }
 
