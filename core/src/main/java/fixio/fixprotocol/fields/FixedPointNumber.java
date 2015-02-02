@@ -141,10 +141,11 @@ public class FixedPointNumber extends Number {
 
     @Override
     public String toString() {
-        if (scale == 0) {
+        if (scale == 0 || scaledValue == 0) {
             return String.valueOf(scaledValue);
         }
         int factor = (int) Math.pow(10.0, scale);
+        
         long beforePoint = scaledValue / factor;
 
         long afterPoint = Math.abs(scaledValue - beforePoint * factor);
