@@ -37,6 +37,7 @@ public class FieldFactory {
         FieldType fieldType = FieldType.forTag(tagNum);
         try {
             switch (fieldType.type()) {
+            	case MONTHYEAR:
                 case STRING:
                     return (F) new StringField(tagNum, new String(value, offset, length, US_ASCII));
                 case BOOLEAN:
