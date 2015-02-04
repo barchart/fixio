@@ -69,6 +69,8 @@ public class FieldFactory {
     @SuppressWarnings("unchecked")
     public static <F extends AbstractField<?>> F fromIntValue(DataType type, int tagNum, int value) {
         switch (type) {
+        	case CHAR:
+        		return (F) new CharField(tagNum, Character.forDigit(value, Character.MAX_RADIX));
             case STRING:
                 return (F) new StringField(tagNum, String.valueOf(value));
             case FLOAT:

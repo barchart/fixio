@@ -15,6 +15,7 @@
  */
 package fixio.fixprotocol;
 
+import fixio.fixprotocol.fields.CharField;
 import fixio.fixprotocol.fields.FieldFactory;
 import fixio.fixprotocol.fields.FixedPointNumber;
 
@@ -28,6 +29,15 @@ final class FieldListBuilderHelper {
     private FieldListBuilderHelper() {
     }
 
+    // From Char
+    
+    static void add(List<FixMessageFragment> list, FieldType fieldType, char value) {
+    	if(fieldType.type() != DataType.CHAR) {
+    		throw new IllegalArgumentException("FieldType " + fieldType + " must be CHAR");
+    	}
+    	list.add(new CharField(fieldType.tag(), value));
+    }
+    
     // From Int
 
     static void add(List<FixMessageFragment> list, DataType type, int tagNum, int value) {

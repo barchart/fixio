@@ -23,6 +23,9 @@ import fixio.fixprotocol.fields.FixedPointNumber;
  * Provides methods to add new fields.
  */
 interface FieldListBuilder<T> {
+	
+	/* New Method */
+	T add(FieldType field, char value);
 
     T add(FieldType field, String value);
 

@@ -79,6 +79,12 @@ public class FixMessageBuilderImpl implements FixMessage, FixMessageBuilder {
         this(expectedBodyFieldCount);
         header.setMessageType(messageType);
     }
+    
+    @Override
+	public FixMessageBuilder add(FieldType field, char value) {
+		FieldListBuilderHelper.add(body, field, value);
+		return this;
+	}
 
     @Override
     public FixMessageBuilderImpl add(FieldType field, int value) {
@@ -304,4 +310,5 @@ public class FixMessageBuilderImpl implements FixMessage, FixMessageBuilder {
         sb.append("trailer{").append(trailer).append('}').append(sp);
         return sb.toString();
     }
+
 }

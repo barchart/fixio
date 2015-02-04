@@ -15,6 +15,7 @@
  */
 package fixio.fixprotocol;
 
+import fixio.fixprotocol.fields.CharField;
 import fixio.fixprotocol.fields.FixedPointNumber;
 import fixio.fixprotocol.fields.StringField;
 
@@ -40,6 +41,12 @@ public class Group implements FieldListBuilder<Group> {
     public void add(FixMessageFragment element) {
         contents.add(element);
     }
+    
+    @Override
+	public Group add(FieldType field, char value) {
+    	contents.add(new CharField(field.tag(), value));
+		return this;
+	}
 
     @Override
     public Group add(FieldType fieldType, String value) {
