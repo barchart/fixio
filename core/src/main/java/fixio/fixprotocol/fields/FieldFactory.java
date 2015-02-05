@@ -37,6 +37,7 @@ public class FieldFactory {
         FieldType fieldType = FieldType.forTag(tagNum);
         try {
             switch (fieldType.type()) {
+            	case CURRENCY:
             	case MONTHYEAR:
                 case STRING:
                     return (F) new StringField(tagNum, new String(value, offset, length, US_ASCII));
@@ -47,6 +48,7 @@ public class FieldFactory {
                 case FLOAT:
                 case PRICE:
                 case QTY:
+                case AMT:
                     return (F) new FloatField(tagNum, value, offset, length);
                 case INT:
                 case LENGTH:

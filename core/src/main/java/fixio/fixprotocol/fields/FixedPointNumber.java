@@ -77,6 +77,11 @@ public class FixedPointNumber extends Number {
         this.scale = scale;
     }
 
+    public FixedPointNumber(long scaledValue, int scale) {
+    	this.scaledValue = scaledValue;
+    	this.scale = (byte) scale;
+    }
+    
     public FixedPointNumber(double value, int precision) {
         this.scale = (byte) precision;
         long factor = (long) Math.pow(10.0, scale);
@@ -144,8 +149,8 @@ public class FixedPointNumber extends Number {
         if (scale == 0 || scaledValue == 0) {
             return String.valueOf(scaledValue);
         }
-        int factor = (int) Math.pow(10.0, scale);
-        
+        int factor = (int) Math.pow(10.0, Math.abs(scale));
+
         long beforePoint = scaledValue / factor;
 
         long afterPoint = Math.abs(scaledValue - beforePoint * factor);
