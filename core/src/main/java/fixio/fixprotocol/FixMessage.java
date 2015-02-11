@@ -31,7 +31,8 @@ public interface FixMessage {
 
     FixMessageHeader getHeader();
 
-    List<FixMessageFragment> getBody();
+    @SuppressWarnings("rawtypes")
+	List<FixMessageFragment> getBody();
 
     Integer getInt(int tagNum);
 
@@ -42,7 +43,11 @@ public interface FixMessage {
     <T> T getValue(FieldType field);
 
     String getString(FieldType field);
+    
+    Character getChar(FieldType field);
 
     String getMessageType();
+    
+    List<Group> getGroups(int tagNum);
 
 }

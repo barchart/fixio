@@ -16,13 +16,14 @@
 
 package fixio.fixprotocol;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fixio.fixprotocol.fields.AbstractField;
+import fixio.fixprotocol.fields.CharField;
 import fixio.fixprotocol.fields.FieldFactory;
 import fixio.fixprotocol.fields.IntField;
 import fixio.fixprotocol.fields.StringField;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Read-only view implementation of received {@link FixMessage}.
@@ -101,6 +102,19 @@ public class FixMessageImpl implements FixMessage {
     public String getString(FieldType field) {
         return getString(field.tag());
     }
+    
+    @Override
+    public Character getChar(FieldType fieldType) {
+    	 FixMessageFragment item = getFirst(fieldType.tag());
+         if (item == null) {
+             return null;
+         }
+         if (item instanceof CharField) {
+             return ((CharField) item).getValue();
+         } else {
+             throw new IllegalArgumentException("Tag " + fieldType.tag() + " is not a Field.");
+         }
+    }
 
     @Override
     public Integer getInt(int tagNum) {
@@ -138,6 +152,7 @@ public class FixMessageImpl implements FixMessage {
         return trailer.getCheckSum();
     }
 
+    @Override
     public List<Group> getGroups(int tagNum) {
         FixMessageFragment fragment = getFirst(tagNum);
         if (fragment instanceof GroupField) {

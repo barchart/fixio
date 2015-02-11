@@ -15,6 +15,7 @@
  */
 package fixio.fixprotocol;
 
+import fixio.fixprotocol.fields.CharField;
 import fixio.fixprotocol.fields.FixedPointNumber;
 import fixio.fixprotocol.fields.IntField;
 import fixio.fixprotocol.fields.StringField;
@@ -217,6 +218,19 @@ public class FixMessageBuilderImpl implements FixMessage, FixMessageBuilder {
     @Override
     public String getString(FieldType field) {
         return getString(field.tag());
+    }
+    
+    @Override
+    public Character getChar(FieldType fieldType) {
+    	 FixMessageFragment item = getFirst(fieldType.tag());
+         if (item == null) {
+             return null;
+         }
+         if (item instanceof CharField) {
+             return ((CharField) item).getValue();
+         } else {
+             throw new IllegalArgumentException("Tag " + fieldType.tag() + " is not a Field.");
+         }
     }
 
     @Override

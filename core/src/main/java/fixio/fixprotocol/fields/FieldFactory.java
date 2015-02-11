@@ -37,6 +37,7 @@ public class FieldFactory {
         FieldType fieldType = FieldType.forTag(tagNum);
         try {
             switch (fieldType.type()) {
+            	case LOCALMKTDATE:
             	case CURRENCY:
             	case MONTHYEAR:
                 case STRING:
