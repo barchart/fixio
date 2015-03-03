@@ -31,6 +31,7 @@
     	ByBaseContractsOnly(12056, BOOLEAN),
     	OptionsRequired(12057, BOOLEAN),
     	
+    	LastSolicitedClOrdID(12073, STRING),
     	MassStatusReqResult(12074, INT), 
         	
         UNKNOWN(-1, STRING),
