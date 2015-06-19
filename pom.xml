@@ -26,6 +26,13 @@
 		<relativePath />
 	</parent>
 
+	<scm>
+		<url>https://github.com/barchart/fixio</url>
+		<connection>scm:git:git://github.com/barchart/fixio.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/barchart/fixio.git</developerConnection>
+		<tag>master</tag>
+	</scm>
+
     <groupId>kpavlov.fixio</groupId>
     <artifactId>fixio</artifactId>
     <packaging>pom</packaging>
@@ -37,8 +44,8 @@
     <properties>
         <slf4j.version>1.7.5</slf4j.version>
         <netty.version>5.0.0.Alpha1</netty.version>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <!-- <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target> -->
         <maven.compiler.optimize>true</maven.compiler.optimize>
         <maven.compiler.debug>true</maven.compiler.debug>
     </properties>
