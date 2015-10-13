@@ -28,13 +28,13 @@
 		<url>https://github.com/barchart/fixio</url>
 		<connection>scm:git:git://github.com/barchart/fixio.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/barchart/fixio.git</developerConnection>
-		<tag>fixio-1.0.1</tag>
+		<tag>master</tag>
 	</scm>
 
     <groupId>kpavlov.fixio</groupId>
     <artifactId>fixio</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <name>fix.io</name>
     <description>FIX Protocol Support for Netty</description>
